@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import { BiMessageAdd } from "react-icons/bi";
+import { useContext } from "react";
+import { TodoItemsContext } from "../store/todo-items-store";
 
 function AddTodo({ onNewItem }) {
+  const {addNewItem} = useContext(TodoItemsContext);
   const todoNameElement = useRef();
   const dueDateElement = useRef();
 
@@ -11,7 +14,7 @@ function AddTodo({ onNewItem }) {
     const dueDate = dueDateElement.current.value;
     todoNameElement.current.value = "";
     dueDateElement.current.value = "";
-    onNewItem(todoName, dueDate);
+    addNewItem(todoName, dueDate);
   };
 
   return (
